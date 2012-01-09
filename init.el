@@ -39,3 +39,10 @@
 (font-lock-add-keywords
  'emacs-lisp-mode
  '(("(\\|)" . 'esk-paren-face)))
+(put 'dired-find-alternate-file 'disabled nil)
+
+
+(set-face-attribute 'default nil :height 90)
+
+
+
