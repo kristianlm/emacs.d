@@ -11,7 +11,7 @@
 (load-file "~/.emacs.d/colortheme-railscasts.el")
 
 ; iedit replace feature
-(load-file "~/.emacs.d/iedit.el")
+(load-file "~/.emacs.d/custom/iedit.el")
 (define-key global-map (kbd "C-;") 'iedit-mode)
 
 
@@ -24,7 +24,7 @@
 (setq geiser-mode-smart-tab-p t)
 
 ; quack should be loaded after geiser
-(load-file "~/.emacs.d/quack.el")
+(load-file "~/.emacs.d/custom/quack.el")
 
 ; I want to enable 'esk-paren-face' for list-modes, so that parens
 ; don't stand out so much.
