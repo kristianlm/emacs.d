@@ -3240,7 +3240,7 @@ Can be used in your `~/.emacs' file something like this:
 ;;       should encourage users to set the prefix to some other key, like an
 ;;       unmodified function key.
 
-(define-key quack-scheme-mode-keymap "f" 'quack-find-file)
+;(define-key quack-scheme-mode-keymap "f" 'quack-find-file)
 (define-key quack-scheme-mode-keymap "k" 'quack-view-keyword-docs)
 (define-key quack-scheme-mode-keymap "m" 'quack-view-manual)
 (define-key quack-scheme-mode-keymap "r" 'run-scheme)
@@ -3997,9 +3997,10 @@ Can be used in your `~/.emacs' file something like this:
   (local-set-key "[" 'quack-insert-opening-bracket)
 
   ;; Steal any find-file bindings.
-  (when quack-remap-find-file-bindings-p
-    (quack-locally-steal-key-bindings 'find-file     'quack-find-file)
-    (quack-locally-steal-key-bindings 'ido-find-file 'quack-find-file))
+;  (when quack-remap-find-file-bindings-p
+ ;   (quack-locally-steal-key-bindings 'find-file     'quack-find-file)
+  ;  (quack-locally-steal-key-bindings 'ido-find-file
+  ;  'quack-find-file)  )
 
   ;; Fight against tabs.
   (when quack-tabs-are-evil-p
