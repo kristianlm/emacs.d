@@ -51,13 +51,9 @@
 ;; http://synthcode.com/wiki/scheme-complete
 (require 'scheme-complete)
 (autoload 'scheme-smart-complete "scheme-complete" nil t)
+
 (eval-after-load 'scheme
   '(define-key scheme-mode-map "\t" 'scheme-complete-or-indent))
-
-;(setq lisp-indent-function 'scheme-smart-indent-function)
-
-
-
 
 
 
@@ -110,12 +106,12 @@
 (winner-mode 1)
 ;;; **** dedicated window toggle
 (defun toggle-current-window-dedication ()
- (interactive)
- (let* ((window    (selected-window))
-        (dedicated (window-dedicated-p window)))
-   (set-window-dedicated-p window (not dedicated))
-   (message "Window %sdedicated to %s" 
-            (if dedicated "no longer " "")
-            (buffer-name))))
+  (interactive)
+  (let* ((window    (selected-window))
+         (dedicated (window-dedicated-p window)))
+    (set-window-dedicated-p window (not dedicated))
+    (message "Window %sdedicated to %s" 
+             (if dedicated "no longer " "")
+             (buffer-name))))
 
 (global-set-key [pause] 'toggle-current-window-dedication)
