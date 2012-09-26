@@ -4,7 +4,7 @@
 (package-initialize)
 
 
-(load-file "~/.emacs.d/colortheme-railscasts.el")
+(load-file "~/.emacs.d/custom/colortheme-railscasts.el")
 
 (load-file "~/.emacs.d/bigloo.el")
 
