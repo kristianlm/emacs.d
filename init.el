@@ -101,6 +101,10 @@
 
 (load-file "~/.emacs.d/custom/chicken.el")
 
+;; automatically associate scheme mode with slime-mode
+(add-hook 'scheme-mode-hook
+          (lambda ()
+            (slime-mode t)))
 ;;; **** dedicated window toggle
 (defun toggle-current-window-dedication ()
  (interactive)
