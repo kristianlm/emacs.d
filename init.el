@@ -105,6 +105,9 @@
 (add-hook 'scheme-mode-hook
           (lambda ()
             (slime-mode t)))
+
+; allows undoing of window setup
+(winner-mode 1)
 ;;; **** dedicated window toggle
 (defun toggle-current-window-dedication ()
  (interactive)
