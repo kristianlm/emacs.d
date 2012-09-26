@@ -6,8 +6,6 @@
 
 (load-file "~/.emacs.d/custom/colortheme-railscasts.el")
 
-(load-file "~/.emacs.d/bigloo.el")
-
 ; iedit replace feature
 (load-file "~/.emacs.d/custom/iedit.el")
 (define-key global-map (kbd "C-;") 'iedit-mode)
@@ -38,9 +36,6 @@
  'emacs-lisp-mode
  '(("(\\|)" . 'esk-paren-face)))
 (put 'dired-find-alternate-file 'disabled nil)
-
-
-(set-face-attribute 'default nil :height 90)
 
 
 (load-file "~/.emacs.d/custom/window-numbering.el")
@@ -85,5 +80,3 @@
 (set-face-attribute 'cursor nil :background "#FF55FF")
 
 
-(add-to-list 'load-path "/usr/lib/chicken/6/")   ; Where Eggs are installed
-(autoload 'chicken-slime "chicken-slime" "SWANK backend for Chicken" t)
