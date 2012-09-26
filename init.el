@@ -87,6 +87,20 @@
 (set-face-attribute 'default nil :family "Inconsolata" :height 80)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
+
+
+;; slime for chicken
+(add-to-list 'load-path "/home/klm/opt/slime-2012-06-12/")
+(add-to-list 'load-path "/home/klm/opt/slime-2012-06-12/contrib/")
+
+(require 'slime-autoloads)
+(require 'slime)
+
+(slime-setup '(slime-fancy
+               slime-fuzzy))
+
+(load-file "~/.emacs.d/custom/chicken.el")
+
 ;;; **** dedicated window toggle
 (defun toggle-current-window-dedication ()
  (interactive)
