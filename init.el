@@ -81,6 +81,12 @@
 
 
 
+
+
+;; Added by peder
+(set-face-attribute 'default nil :family "Inconsolata" :height 80)
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
 ;;; **** dedicated window toggle
 (defun toggle-current-window-dedication ()
  (interactive)
