@@ -34,5 +34,6 @@
  '(paren-match ((t (:background "green"))))
  '(paren-mismatch ((t (:background "red"))))
  '(quack-pltish-comment-face ((t (:foreground "#bc9458"))))
+ '(quack-pltish-selfeval-face ((t (:background "#202835" :foreground "#3ae"))))
  '(show-paren-mismatch ((((class color)) (:background "red")))))
 
