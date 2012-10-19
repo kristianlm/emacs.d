@@ -42,7 +42,7 @@
  '(font-lock-warning-face ((t (:foreground "#cd6889" :weight bold))))
  '(isearch ((t (:background "#555555" :foreground "#b0e2ff"))))
  '(lazy-highlight ((t (:background "#556b2f" :foreground "#ffffff"))))
- '(show-paren-match-face ((t (:bold t :foreground "#000" :background "#4e4"))))
+;; '(show-paren-match-face ((t (:bold t :foreground "#000" :background "#4e4"))))
  '(link ((t (:foreground "#0000ff" :underline t))))
  '(link-visited ((t (:foreground "#8b008b" :underline t))))
  '(button ((t (:underline t))))
