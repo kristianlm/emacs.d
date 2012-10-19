@@ -20,6 +20,7 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:background "#232323" :foreground "#e6e1de"))))
  '(highlight ((t (:background "grey20"))))
+ '(idle-highlight ((t (:background "#304530"))))
  '(info-node ((t (:bold t :underline t :foreground "goldenrod"))))
  '(info-xref ((t (:bold t :underline t :foreground "#0000ee"))))
  '(link ((t (:foreground "#5555ff" :underline t))))
