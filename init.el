@@ -5,6 +5,7 @@
 
 
 (load-file "~/.emacs.d/custom/colortheme-railscasts.el")
+(load-file "~/.emacs.d/custom/dired-sort-criteria.el")
 
 ; iedit replace feature
 (load-file "~/.emacs.d/custom/iedit.el")
