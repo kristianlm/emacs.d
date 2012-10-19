@@ -24,7 +24,9 @@
  'railscasts
  '(default ((t (:background "#230000" :foreground "#e6e1de"))))
  '(cursor ((t (:background "#f3f" :foreground "#fff"))))
- '(region ((t (:background "#555577" :foreground "#e6e1de" :weight bold))))
+ ;;region seems to shadow the original?? i dont want to change
+ ;;foreground color. customizing-face instead
+ ;;'(region ((t (:background "#555577" :foreground "#e6e1de" :weight bold))))
  '(mode-line ((t (:background "#e66" :foreground "#222"))))
  '(mode-line-inactive ((t (:background "#151515" :foreground "#456"))))
  '(fringe ((t (:background "#232323"))))
