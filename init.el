@@ -130,3 +130,10 @@
 ;; disable default show-paren-mode because
 ;; I want to try highlight-parenthesis-mode instead
 ;; (show-paren-mode -1)
+
+;; enable highlight parenthesis mode for our lisp modes
+(add-hook 'scheme-mode-hook           (lambda () (highlight-parentheses-mode t)))
+(add-hook 'lisp-mode-hook             (lambda () (highlight-parentheses-mode t)))
+(add-hook 'emacs-lisp-mode-hook       (lambda () (highlight-parentheses-mode t)))
+(add-hook 'lisp-interaction-mode-hook (lambda () (highlight-parentheses-mode t)))
+
