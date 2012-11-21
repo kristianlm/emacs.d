@@ -137,3 +137,10 @@
 (add-hook 'emacs-lisp-mode-hook       (lambda () (highlight-parentheses-mode t)))
 (add-hook 'lisp-interaction-mode-hook (lambda () (highlight-parentheses-mode t)))
 
+;; enable paredit for my lisps
+(progn
+  (add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1)))
+  (add-hook 'lisp-mode-hook             (lambda () (paredit-mode +1)))
+  (add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
+  (add-hook 'scheme-mode-hook           (lambda () (paredit-mode +1))))
+
