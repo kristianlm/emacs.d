@@ -126,3 +126,9 @@
   (global-set-key (kbd "C-S-b") (lambda () (interactive) (scroll-right 4))))
 
 (global-set-key (kbd "C-c g") 'magit-status)
+
+;; switch between header and source file
+(add-hook 'c-mode-common-hook
+  (lambda() 
+    (local-set-key (kbd "C-c o") 'ff-find-other-file)))
+
