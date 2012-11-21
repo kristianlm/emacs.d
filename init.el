@@ -78,8 +78,10 @@
 
 
 ;; slime for chicken
-(add-to-list 'load-path "/home/klm/opt/slime-2012-06-12/")
-(add-to-list 'load-path "/home/klm/opt/slime-2012-06-12/contrib/")
+;;(add-to-list 'load-path "/home/klm/opt/slime-2012-06-12/")
+;;(add-to-list 'load-path "/home/klm/opt/slime-2012-06-12/contrib/")
+(add-to-list 'load-path "/home/klm/opt/slime-2012-11-03/")
+(add-to-list 'load-path "/home/klm/opt/slime-2012-11-03/contrib/")
 
 (require 'slime-autoloads)
 (require 'slime)
