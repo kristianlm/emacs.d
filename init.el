@@ -1,3 +1,4 @@
+
 (require 'package)
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
@@ -23,19 +24,6 @@
 ; quack should be loaded after geiser
 (load-file "~/.emacs.d/custom/quack.el")
 
-; I want to enable 'esk-paren-face' for list-modes, so that parens
-; don't stand out so much.
-(font-lock-add-keywords
- 'scheme-mode
- '(("(\\|)" . 'esk-paren-face)))
-
-(font-lock-add-keywords
- 'lisp-mode
- '(("(\\|)" . 'esk-paren-face)))
-
-(font-lock-add-keywords
- 'emacs-lisp-mode
- '(("(\\|)" . 'esk-paren-face)))
 (put 'dired-find-alternate-file 'disabled nil)
 
 
@@ -48,6 +36,9 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 (put 'ido-exit-minibuffer 'disabled nil)
+
+
+
 
 ;; http://synthcode.com/wiki/scheme-complete
 (require 'scheme-complete)
@@ -81,7 +72,7 @@
 
 
 ;; Added by peder
-(set-face-attribute 'default nil :family "Inconsolata" :height 80)
+;;(set-face-attribute 'default nil :family "Inconsolata" :height 80)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 

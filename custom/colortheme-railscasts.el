@@ -28,7 +28,7 @@
  ;;foreground color. customizing-face instead
  ;;'(region ((t (:background "#555577" :foreground "#e6e1de" :weight bold))))
  '(mode-line ((t (:background "#e66" :foreground "#222"))))
- '(mode-line-inactive ((t (:background "#151515" :foreground "#456"))))
+ '(mode-line-inactive ((t (:background "#101010" :foreground "#456"))))
  '(fringe ((t (:background "#232323"))))
  '(minibuffer-prompt ((t (:foreground "#ff6600" :weight bold))))
  '(font-lock-builtin-face ((t (:foreground "#d0d0ff"))))
