@@ -99,9 +99,7 @@
 (load-file "~/.emacs.d/custom/chicken.el")
 
 ;; automatically associate scheme mode with slime-mode
-(add-hook 'scheme-mode-hook
-          (lambda ()
-            (slime-mode t)))
+;; (add-hook 'scheme-mode-hook (lambda () (slime-mode nil)))
 
 ; allows undoing of window setup
 (winner-mode 1)
