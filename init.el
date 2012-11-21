@@ -124,3 +124,5 @@
 
   (global-set-key (kbd "C-S-f") (lambda () (interactive) (scroll-left 4)))
   (global-set-key (kbd "C-S-b") (lambda () (interactive) (scroll-right 4))))
+
+(global-set-key (kbd "C-c g") 'magit-status)
