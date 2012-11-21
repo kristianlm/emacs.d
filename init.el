@@ -123,3 +123,10 @@
   (lambda() 
     (local-set-key (kbd "C-c o") 'ff-find-other-file)))
 
+
+;; doesn't seem to work, need to re-enable scheme mode
+(require 'parenface)
+
+;; disable default show-paren-mode because
+;; I want to try highlight-parenthesis-mode instead
+;; (show-paren-mode -1)
