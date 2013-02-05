@@ -30,7 +30,7 @@
  '(diff-removed ((t (:inherit diff-changed :foreground "red3"))))
  '(font-lock-comment-face ((t (:foreground "#bc9458" :slant italic))))
  '(highlight ((t nil)))
- '(idle-highlight ((t (:background "#181818"))))
+ '(idle-highlight ((t (:background "#305050"))))
  '(info-node ((t (:bold t :underline t :foreground "goldenrod"))))
  '(info-xref ((t (:bold t :underline t :foreground "#0000ee"))))
  '(link ((t (:foreground "#5555ff" :underline t))))
