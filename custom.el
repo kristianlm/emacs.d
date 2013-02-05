@@ -24,7 +24,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#232323" :foreground "#e6e1de" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 83 :width normal :foundry "unknown" :family "inconsolata"))))
+ '(default ((t (:inherit nil :stipple nil :background "#2b2b2b" :foreground "#a8b6c5" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 87 :width normal :foundry "xos4" :family "Terminus"))))
  '(diff-added ((t (:inherit diff-changed :foreground "green4"))))
  '(diff-header ((t (:foreground "#77e"))))
  '(diff-removed ((t (:inherit diff-changed :foreground "red3"))))
