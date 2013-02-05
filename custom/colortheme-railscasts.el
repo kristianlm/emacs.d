@@ -22,14 +22,14 @@
 
 (custom-theme-set-faces
  'railscasts
- '(default ((t (:background "#230000" :foreground "#e6e1de"))))
+ '(default ((t (:background "#FFFFFF" :foreground "#e6e1de"))))
  '(cursor ((t (:background "#f3f" :foreground "#fff"))))
  ;;region seems to shadow the original?? i dont want to change
  ;;foreground color. customizing-face instead
  ;;'(region ((t (:background "#555577" :foreground "#e6e1de" :weight bold))))
- '(mode-line ((t (:background "#e66" :foreground "#222"))))
- '(mode-line-inactive ((t (:background "#101010" :foreground "#456"))))
- '(fringe ((t (:background "#232323"))))
+ '(mode-line          ((t (:background "#555" :foreground "#DDD" ))))
+ '(mode-line-inactive ((t (:background "#353535" :foreground "#666" ))))
+ '(fringe ((t (:background "#3c3f41"))))
  '(minibuffer-prompt ((t (:foreground "#ff6600" :weight bold))))
  '(font-lock-builtin-face ((t (:foreground "#d0d0ff"))))
  '(font-lock-comment-face ((t (:slant italic :foreground "#bc9400"))))
