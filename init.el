@@ -39,10 +39,14 @@
 
 
 
+;;let's use marmelade instead :)
+;;(load-file "~/.emacs.d/custom/chicken-scheme.el/chicken-scheme.el")
+;;(require 'chicken-scheme)
+
 
 ;; http://synthcode.com/wiki/scheme-complete
-(require 'scheme-complete)
-(autoload 'scheme-smart-complete "scheme-complete" nil t)
+;;(require 'scheme-complete)
+;;(autoload 'scheme-smart-complete "scheme-complete" nil t)
 
 (eval-after-load 'scheme
   '(define-key scheme-mode-map "\t" 'scheme-complete-or-indent))
@@ -80,14 +84,14 @@
 ;; slime for chicken
 ;;(add-to-list 'load-path "/home/klm/opt/slime-2012-06-12/")
 ;;(add-to-list 'load-path "/home/klm/opt/slime-2012-06-12/contrib/")
-(add-to-list 'load-path "/home/klm/opt/slime-2012-11-03/")
-(add-to-list 'load-path "/home/klm/opt/slime-2012-11-03/contrib/")
+;;(add-to-list 'load-path "/home/klm/opt/slime-2012-11-03/")
+;;(add-to-list 'load-path "/home/klm/opt/slime-2012-11-03/contrib/")
 
-(require 'slime-autoloads)
-(require 'slime)
+;;(require 'slime-autoloads)
+;;(require 'slime)
 
-(slime-setup '(slime-fancy
-               slime-fuzzy))
+;;(slime-setup '(slime-fancy
+;;               slime-fuzzy))
 
 (load-file "~/.emacs.d/custom/chicken.el")
 
@@ -142,12 +146,68 @@
   (add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1)))
   (add-hook 'lisp-mode-hook             (lambda () (paredit-mode +1)))
   (add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
-  (add-hook 'scheme-mode-hook           (lambda () (paredit-mode +1))))
+  (add-hook 'scheme-mode-hook           (lambda () (paredit-mode +1)))
+  (add-hook 'clojure-mode-hook          (lambda () (paredit-mode +1))))
 
+(let ((zebra 'stripes)
+      (tiger 'fierce))
+  (message "One kind of animal has %s and another is %s."
+           zebra tiger))
 
-;; change window size (from emacswiki)
 (progn
-  (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
-  (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
-  (global-set-key (kbd "S-C-<down>") 'shrink-window)
-  (global-set-key (kbd "S-C-<up>") 'enlarge-window))
+  ;; change window size (from emacswiki)
+  (global-set-key (kbd "S-C-<left>") (lambda () (interactive) (shrink-window-horizontally 3)))
+  (global-set-key (kbd "S-C-<right>") (lambda () (interactive) (enlarge-window-horizontally 3)))
+  (global-set-key (kbd "S-C-<down>") (lambda () (interactive) (shrink-window 3)))
+  (global-set-key (kbd "S-C-<up>") (lambda () (interactive) (enlarge-window 3))))
+
+
+(setq jabber-account-list
+    '(("kristian@adellica.com"
+       (:network-server . "talk.google.com")
+       (:connection-type . ssl))))
+
+;; using hippie instead of dabbrev-expand, lets see how it goes
+(global-set-key "\M-/" 'hippie-expand)
+
+;; load rudel autoloads (custom)
+;; (load-file "~/.emacs.d/custom/rudel-0.2-4/rudel-loaddefs.el")
+
+(require 'ac-nrepl)
+(add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
+(add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
+
+;; (eval-after-load "auto-complete"
+;;   '(add-to-list 'ac-modes 'nrepl-mode))
+
+
+;;(load-file "/home/klm/.emacs.d/custom/auto-complete-init.el")
+;;(load-file "/home/klm/.emacs.d/elpa/auto-complete-1.4/auto-complete-config.el")
+
+;; highlight symbol-at-point and search for them
+(require 'highlight-symbol)
+
+(global-set-key (kbd "C-c M-N") 'highlight-symbol-at-point)
+(global-set-key (kbd "M-N") 'highlight-symbol-next)
+(global-set-key (kbd "M-P") 'highlight-symbol-prev)
+
+;; all of a sudden, I need to do this:
+(require 'scheme-complete)
+;; nobody knows why
+
+(add-to-list 'load-path "~/opt/ledger/lisp/")
+(require 'ledger)
+(add-to-list 'auto-mode-alist '("\\.ledger\\'" . ledger-mode))
+
+
+(global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
+
+
+;; ;; ;;(set-frame-font "Inconsolata:pixelsize=12:spacing=110")
+;; ;; (set-frame-font "Bitstream Vera Sans Mono:pixelsize=10")
+;; (set-frame-font "Droid Sans Mono-9")
+;; (set-frame-font "Terminus-9")
+;; (set-frame-font "Inconsolata-9")
+
+
+
