@@ -55,7 +55,5 @@
 
 (define-minor-mode greek-minor-mode
   "Replace your strings 'theta' and friends with their greek symbols."
-  :lighter " greek"
+  :lighter " Greek"
   (greek-symbols))
-
-
