@@ -2,6 +2,9 @@
 (require 'package)
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
 (package-initialize)
 
 
@@ -30,7 +33,8 @@
 (load-file "~/.emacs.d/custom/window-numbering.el")
 (window-numbering-mode 1)
 
-
+;; load theme before custom stuff
+;; (load-theme 'zen-and-art)
 
 ;load custom faces from a different file
 (setq custom-file "~/.emacs.d/custom.el")
@@ -210,4 +214,42 @@
 ;; (set-frame-font "Inconsolata-9")
 
 
+
+(setq pop-up-windows nil)
+
+(global-set-key (kbd "s-b") 'recompile)
+
+
+;;; ****** multiple cursors
+(require 'multiple-cursors)
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+
+;; this did not work
+;;(add-to-list 'tramp-default-proxies-alist '(".*" "\`root\'" "/ssh:%h:"))
+
+
+
+
+(require 'js-comint)
+(setq inferior-js-program-command "mongo")
+(add-hook 'js2-mode-hook '(lambda () 
+			    (local-set-key "\C-x\C-e" 'js-send-last-sexp)
+			    (local-set-key "\C-\M-x" 'js-send-last-sexp-and-go)
+			    (local-set-key "\C-cb" 'js-send-buffer)
+			    (local-set-key "\C-c\C-b" 'js-send-buffer-and-go)
+			    (local-set-key "\C-cl" 'js-load-file-and-go)
+			    ))
+
+;; quick access to imeny
+(global-set-key (kbd "C-S-i") 'imenu-anywhere)
+
+(global-set-key (kbd "s-a") 'kmacro-start-macro-or-insert-counter)
+(global-set-key (kbd "s-s") 'kmacro-end-or-call-macro)
+
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+;;(setenv "PATH" (concat "/home/klm/opt/android-chicken/build/host/bin/" ":" (getenv "PATH")))
 
