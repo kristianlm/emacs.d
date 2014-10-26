@@ -25,4 +25,7 @@
 (put 'when 'scheme-indent-function 1)
 (put 'unless 'scheme-indent-function 1)
 (put 'match 'scheme-indent-function 1)
+(put 'dotimes 'scheme-indent-function 1)
+(put '-> 'scheme-indent-function 1)
 
+(put 'alist-let 'scheme-indent-function 1)
