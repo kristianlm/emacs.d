@@ -177,9 +177,9 @@
 ;; load rudel autoloads (custom)
 ;; (load-file "~/.emacs.d/custom/rudel-0.2-4/rudel-loaddefs.el")
 
-(require 'ac-nrepl)
-(add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
-(add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
+;; (require 'ac-nrepl)
+;; (add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
+;; (add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
 
 ;; (eval-after-load "auto-complete"
 ;;   '(add-to-list 'ac-modes 'nrepl-mode))
