@@ -253,3 +253,67 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 ;;(setenv "PATH" (concat "/home/klm/opt/android-chicken/build/host/bin/" ":" (getenv "PATH")))
 
+
+;; expand region
+(global-set-key (kbd "C-=") 'er/expand-region)
+
+;; for cleanup-buffer (magnars)
+(load-file "/home/klm/.emacs.d/defuns/buffer-defuns.el")
+
+(global-set-key (kbd "C-c C-r") 'rename-sgml-tag)
+
+
+(add-hook 'html-mode-hook
+          '(lambda ()
+             (local-set-key (kbd "C-M-S-B") 'sgml-skip-tag-backward)
+             (local-set-key (kbd "C-M-S-F") 'sgml-skip-tag-forward)
+
+             (local-set-key (kbd "C-M-b") 'paredit-forward)
+             (local-set-key (kbd "C-M-f") 'paredit-backward)
+
+             (define-key html-mode-map (kbd "C-M-f") 'paredit-forward)
+             (define-key html-mode-map (kbd "C-M-b") 'paredit-backward)
+
+             (define-key sgml-mode-map (kbd "C-M-f") 'paredit-forward)
+             (define-key sgml-mode-map (kbd "C-M-b") 'paredit-backward)))
+
+;; I need my C-x C-j!
+(require 'dired)
+
+;; meta-( will open and wrap paren
+(require 'paredit)
+(global-set-key (kbd "C-x C-j") 'dired-jump)
+(eval-after-load "paredit"
+  '(define-key paredit-mode-map (kbd "M-(") '(lambda () (interactive) (paredit-open-parenthesis 1))))
+
+(global-set-key (kbd "C-c t") 'toggle-truncate-lines)
+
+(global-set-key (kbd "C-S-k") 'kill-whole-line)
+
+(global-set-key (kbd "C-x C-d") 'ido-dired)
+
+
+(require 'repository-root)
+(require 'grep-o-matic)
+
+(global-set-key (kbd "C-x C-d") 'ido-dired)
+
+
+
+
+
+(add-hook 'js-mode-hook (lambda () (paredit-mode +1)))
+(setq js-indent-level 2)
+
+(defun js-space-for-delimiter-p (endp delimiter)
+  (not (eq major-mode 'js-mode)))
+
+(defvar paredit-space-for-delimiter-predicates nil)
+(add-to-list 'paredit-space-for-delimiter-predicates
+             'js-space-for-delimiter-p)
+
+
+
+(put 'erase-buffer 'disabled nil)
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
