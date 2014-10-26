@@ -118,11 +118,11 @@
 
 ;; my very own elisp!
 (progn
-  (global-set-key (kbd "C-S-n") (lambda () (interactive) (scroll-up 4)))
-  (global-set-key (kbd "C-S-p") (lambda () (interactive) (scroll-up -4)))
+  (global-set-key (kbd "C-S-n") (lambda () (interactive) (scroll-up 6)))
+  (global-set-key (kbd "C-S-p") (lambda () (interactive) (scroll-up -6)))
 
-  (global-set-key (kbd "C-S-f") (lambda () (interactive) (scroll-left 4)))
-  (global-set-key (kbd "C-S-b") (lambda () (interactive) (scroll-right 4))))
+  (global-set-key (kbd "C-S-f") (lambda () (interactive) (scroll-left 6)))
+  (global-set-key (kbd "C-S-b") (lambda () (interactive) (scroll-right 6))))
 
 (global-set-key (kbd "C-c g") 'magit-status)
 
