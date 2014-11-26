@@ -5,11 +5,7 @@
 ;; Unfortunately, it clashes with the version that Clojure want,
 ;; so have fun.
 
-(autoload 'chicken-slime "chicken-slime" "SWANK backend for Chicken" t)
-
 ;; Where Eggs are installed
-(add-to-list 'load-path "/usr/local/lib/chicken/6/")
-
 (add-to-list 'load-path "~/.emacs.d/custom")
 (require 'scheme-c-mode)
 
