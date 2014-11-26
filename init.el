@@ -1,4 +1,8 @@
 
+;; hide tutorial
+(setq inhibit-startup-message t)
+
+
 (require 'package)
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
@@ -9,6 +13,21 @@
 
 (load-file "~/.emacs.d/custom/colortheme-railscasts.el")
 (load-file "~/.emacs.d/custom/dired-sort-criteria.el")
+
+;; (require 'ido)
+;; (ido-mode t)
+;; (ido-everywhere 1)
+;; (require 'ido-better-flex)
+;; (ido-better-flex/enable)
+
+
+;; never require "yes", "y" should be enough
+;; http://www.emacswiki.org/emacs/YesOrNoP
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+;; for ido-mode on M-X
+;; (global-set-key (kbd "M-x") 'smex)
+
 
 ; iedit replace feature
 (load-file "~/.emacs.d/custom/iedit.el")
@@ -32,20 +51,24 @@
 (load-file "~/.emacs.d/custom/window-numbering.el")
 (window-numbering-mode 1)
 
-;; load theme before custom stuff
-;; (load-theme 'zen-and-art)
+
+(put 'dired-find-alternate-file 'disabled nil)
+
+
+(setq icicle-buffer-include-recent-files-nflag 1)
 
 ;load custom faces from a different file
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 (put 'ido-exit-minibuffer 'disabled nil)
 
+;; http://stackoverflow.com/questions/17986194/emacs-disable-automatic-file-search-in-ido-mode
+;; don't automatically search in other directories. because that's stupid.
+(setq ido-auto-merge-work-directories-length -1)
 
-
-;;let's use marmelade instead :)
-;;(load-file "~/.emacs.d/custom/chicken-scheme.el/chicken-scheme.el")
-;;(require 'chicken-scheme)
-
+;; icicles for minibuffer completion
+(require 'icicles)
+(icy-mode 1)
 
 ;; http://synthcode.com/wiki/scheme-complete
 ;;(require 'scheme-complete)
@@ -131,6 +154,8 @@
   (lambda()
     (local-set-key (kbd "C-c o") 'ff-find-other-file)))
 
+(require 'chicken-scheme)
+(add-hook 'scheme-mode-hook 'chicken-scheme-hook)
 ;; doesn't seem to work, need to re-enable scheme mode
 (require 'parenface)
 
@@ -284,7 +309,7 @@
 (eval-after-load "paredit"
   '(define-key paredit-mode-map (kbd "M-(") '(lambda () (interactive) (paredit-open-parenthesis 1))))
 
-(global-set-key (kbd "C-c t") 'toggle-truncate-lines)
+(global-set-key (kbd "C-c C-t") 'toggle-truncate-lines)
 
 (global-set-key (kbd "C-S-k") 'kill-whole-line)
 
@@ -311,7 +336,23 @@
              'js-space-for-delimiter-p)
 
 
+;; ==================== stolen from stackooverflow
+;; http://stackoverflow.com/questions/10627289/emacs-internal-process-killing-any-command
+(define-key process-menu-mode-map (kbd "C-k") 'joaot/delete-process-at-point)
+(defun joaot/delete-process-at-point ()
+  (interactive)
+  (let ((process (get-text-property (point) 'tabulated-list-id)))
+    (cond ((and process (processp process))
+           (kill-process process)
+           (sleep-for 0.1)
+           (revert-buffer))
+          (t (error "no process at point!")))))
+;; ====================
+
 
 (put 'erase-buffer 'disabled nil)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; turn idle-highlight on for any code
+(add-hook 'prog-mode-hook 'idle-highlight-mode)
