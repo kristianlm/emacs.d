@@ -7,7 +7,6 @@
 
 (package-initialize)
 
-
 (load-file "~/.emacs.d/custom/colortheme-railscasts.el")
 (load-file "~/.emacs.d/custom/dired-sort-criteria.el")
 
@@ -110,7 +109,7 @@
   (let* ((window    (selected-window))
          (dedicated (window-dedicated-p window)))
     (set-window-dedicated-p window (not dedicated))
-    (message "Window %sdedicated to %s" 
+    (message "Window %sdedicated to %s"
              (if dedicated "no longer " "")
              (buffer-name))))
 
@@ -121,6 +120,7 @@
   (global-set-key (kbd "C-S-n") (lambda () (interactive) (scroll-up 6)))
   (global-set-key (kbd "C-S-p") (lambda () (interactive) (scroll-up -6)))
 
+  ;; these don't work
   (global-set-key (kbd "C-S-f") (lambda () (interactive) (scroll-left 6)))
   (global-set-key (kbd "C-S-b") (lambda () (interactive) (scroll-right 6))))
 
@@ -128,9 +128,8 @@
 
 ;; switch between header and source file
 (add-hook 'c-mode-common-hook
-  (lambda() 
+  (lambda()
     (local-set-key (kbd "C-c o") 'ff-find-other-file)))
-
 
 ;; doesn't seem to work, need to re-enable scheme mode
 (require 'parenface)
@@ -233,10 +232,9 @@
 
 
 
-
 (require 'js-comint)
 (setq inferior-js-program-command "mongo")
-(add-hook 'js2-mode-hook '(lambda () 
+(add-hook 'js2-mode-hook '(lambda ()
 			    (local-set-key "\C-x\C-e" 'js-send-last-sexp)
 			    (local-set-key "\C-\M-x" 'js-send-last-sexp-and-go)
 			    (local-set-key "\C-cb" 'js-send-buffer)
