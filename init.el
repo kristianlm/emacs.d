@@ -14,11 +14,19 @@
 (load-file "~/.emacs.d/custom/colortheme-railscasts.el")
 (load-file "~/.emacs.d/custom/dired-sort-criteria.el")
 
-;; (require 'ido)
-;; (ido-mode t)
-;; (ido-everywhere 1)
-;; (require 'ido-better-flex)
-;; (ido-better-flex/enable)
+(require 'ido)
+(ido-everywhere 1)
+(setq ido-enable-flex-matching t)
+(setq ido-use-filename-at-point 'guess)
+(ido-mode t)
+
+;;
+(setq mouse-yank-at-point t)
+
+
+
+;;(require 'ido-better-flex)
+;;(ido-better-flex/enable)
 
 
 ;; never require "yes", "y" should be enough
@@ -43,7 +51,9 @@
 ;(setq geiser-mode-smart-tab-p t)
 
 ; quack should be loaded after geiser
-(load-file "~/.emacs.d/custom/quack.el")
+;;(load-file "~/.emacs.d/custom/quack.el")
+
+(require 'quack)
 
 (put 'dired-find-alternate-file 'disabled nil)
 
@@ -55,8 +65,6 @@
 (put 'dired-find-alternate-file 'disabled nil)
 
 
-(setq icicle-buffer-include-recent-files-nflag 1)
-
 ;load custom faces from a different file
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
@@ -67,8 +75,10 @@
 (setq ido-auto-merge-work-directories-length -1)
 
 ;; icicles for minibuffer completion
-(require 'icicles)
-(icy-mode 1)
+
+;; (require 'icicles)
+;; (setq icicle-buffer-include-recent-files-nflag 1)
+;; (icy-mode 1)
 
 ;; http://synthcode.com/wiki/scheme-complete
 ;;(require 'scheme-complete)
@@ -119,7 +129,7 @@
 ;;(slime-setup '(slime-fancy
 ;;               slime-fuzzy))
 
-(load-file "~/.emacs.d/custom/chicken.el")
+
 
 ;; automatically associate scheme mode with slime-mode
 ;; (add-hook 'scheme-mode-hook (lambda () (slime-mode nil)))
@@ -140,12 +150,12 @@
 
 ;; my very own elisp!
 (progn
-  (global-set-key (kbd "C-S-n") (lambda () (interactive) (scroll-up 6)))
-  (global-set-key (kbd "C-S-p") (lambda () (interactive) (scroll-up -6)))
+  (global-set-key (kbd "C-S-n") (lambda () (interactive) (scroll-up 4)))
+  (global-set-key (kbd "C-S-p") (lambda () (interactive) (scroll-up -4)))
 
   ;; these don't work
-  (global-set-key (kbd "C-S-f") (lambda () (interactive) (scroll-left 6)))
-  (global-set-key (kbd "C-S-b") (lambda () (interactive) (scroll-right 6))))
+  (global-set-key (kbd "C-S-f") (lambda () (interactive) (scroll-left 4)))
+  (global-set-key (kbd "C-S-b") (lambda () (interactive) (scroll-right 4))))
 
 (global-set-key (kbd "C-c g") 'magit-status)
 
@@ -154,20 +164,14 @@
   (lambda()
     (local-set-key (kbd "C-c o") 'ff-find-other-file)))
 
-(require 'chicken-scheme)
-(add-hook 'scheme-mode-hook 'chicken-scheme-hook)
-;; doesn't seem to work, need to re-enable scheme mode
+;;(require 'chicken-scheme)
+(load-file "~/.emacs.d/custom/chicken.el")
+;;(add-hook 'scheme-mode-hook 'chicken-scheme-hook)
+
+;; (remove-hook 'inferior-scheme-mode-hook 'chicken-scheme-hook)
+
 (require 'parenface)
-
-;; disable default show-paren-mode because
-;; I want to try highlight-parenthesis-mode instead
-;; (show-paren-mode -1)
-
-;; enable highlight parenthesis mode for our lisp modes
-(add-hook 'scheme-mode-hook           (lambda () (highlight-parentheses-mode t)))
-(add-hook 'lisp-mode-hook             (lambda () (highlight-parentheses-mode t)))
-(add-hook 'emacs-lisp-mode-hook       (lambda () (highlight-parentheses-mode t)))
-(add-hook 'lisp-interaction-mode-hook (lambda () (highlight-parentheses-mode t)))
+(global-paren-face-mode t)
 
 ;; enable paredit for my lisps
 (progn
@@ -177,10 +181,6 @@
   (add-hook 'scheme-mode-hook           (lambda () (paredit-mode +1)))
   (add-hook 'clojure-mode-hook          (lambda () (paredit-mode +1))))
 
-(let ((zebra 'stripes)
-      (tiger 'fierce))
-  (message "One kind of animal has %s and another is %s."
-           zebra tiger))
 
 (progn
   ;; change window size (from emacswiki)
@@ -227,6 +227,12 @@
 (require 'ledger)
 (add-to-list 'auto-mode-alist '("\\.ledger\\'" . ledger-mode))
 
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+
+(custom-set-variables  
+ '(js2-basic-offset 2)  
+ '(js2-bounce-indent-p t))
 
 (global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
 
@@ -234,7 +240,7 @@
 ;; ;; ;;(set-frame-font "Inconsolata:pixelsize=12:spacing=110")
 ;; ;; (set-frame-font "Bitstream Vera Sans Mono:pixelsize=10")
 ;; (set-frame-font "Droid Sans Mono-9")
-;; (set-frame-font "Terminus-9")
+;; (set-frame-font "Terminus-10")
 ;; (set-frame-font "Inconsolata-9")
 
 
@@ -246,11 +252,11 @@
 
 ;;; ****** multiple cursors
 (require 'multiple-cursors)
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-
+;; (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-symbol-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-symbol-like-this)
+(global-set-key (kbd "C-M->") 'mc/unmark-next-like-this)
+(global-set-key (kbd "C-M-<") 'mc/unmark-previous-like-this)
 
 ;; this did not work
 ;;(add-to-list 'tramp-default-proxies-alist '(".*" "\`root\'" "/ssh:%h:"))
@@ -319,13 +325,9 @@
 (require 'repository-root)
 (require 'grep-o-matic)
 
-(global-set-key (kbd "C-x C-d") 'ido-dired)
 
 
-
-
-
-(add-hook 'js-mode-hook (lambda () (paredit-mode +1)))
+;;(add-hook 'js-mode-hook (lambda () (paredit-mode +1)))
 (setq js-indent-level 2)
 
 (defun js-space-for-delimiter-p (endp delimiter)
@@ -352,7 +354,48 @@
 
 (put 'erase-buffer 'disabled nil)
 
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; (remove-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; turn idle-highlight on for any code
 (add-hook 'prog-mode-hook 'idle-highlight-mode)
+
+(setq-default indent-tabs-mode nil)
+
+(setq
+ backup-by-copying t ;; don't clobber symlinks
+ backup-directory-alist '(("." . "~/.saves")) ;; don't litter my fs tree
+ delete-old-versions t
+ kept-new-versions 6
+ kept-old-versions 2
+ version-control t) ;; use versioned backups
+
+
+;; http://www.reddit.com/r/emacs/comments/21a4p9/use_recentf_and_ido_together/
+(setq ido-use-virtual-buffers t)
+
+;; color compilation buffer too
+;; http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emacs-compilation-buffer
+(require 'ansi-color)
+(defun my-colorize-compilation-buffer ()
+  (when (eq major-mode 'compilation-mode)
+    (ansi-color-apply-on-region compilation-filter-start (point-max))))
+(add-hook 'compilation-filter-hook 'my-colorize-compilation-buffer)
+
+
+;; pretty lambda
+
+(require 'pretty-lambdada)
+(pretty-lambda-for-modes)
+
+
+
+;; bb mode
+(add-to-list 'auto-mode-alist '("\\.bb\\'" . conf-mode))
+(add-to-list 'auto-mode-alist '("\\.bbappend\\'" . conf-mode))
+
+;;(require 'ws-trim)
+;;(setq ws-trim-level 1)
+;;(global-ws-trim-mode t)
+(load-file "~/.emacs.d/redspace.el")
+(redspace-mode t)
