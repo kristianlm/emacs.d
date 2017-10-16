@@ -397,5 +397,33 @@
 ;;(require 'ws-trim)
 ;;(setq ws-trim-level 1)
 ;;(global-ws-trim-mode t)
-(load-file "~/.emacs.d/redspace.el")
-(redspace-mode t)
+
+;; Nevermind redspace. It's too intrusive, it colors my inferior
+;; buffers, my command-lines and stuff. It's much better to be able to
+;; ws-trim inside the magit buffer like below!
+;;
+;;(load-file "~/.emacs.d/redspace.el")
+;;(redspace-mode t)
+
+;; I actually understand this. This is probably the most amazing
+;; snippet of code I've come across this month.
+;;
+;; https://stackoverflow.com/questions/20127377/how-can-i-remove-trailing-whitespace-from-a-hunk-in-magit
+(defun my-magit-delete-trailing-whitespace ()
+  "Remove whitespace from the current file."
+  (interactive)
+  (save-excursion
+    (magit-diff-visit-file-worktree (magit-file-at-point))
+    (magit-section-value (magit-current-section))
+    ;;(ws-trim-line nil)
+    ;;() (delete-trailing-whitespace)
+    ;;(count-words-region)
+    (save-buffer)
+    (kill-buffer))
+  (magit-refresh))
+
+;; easyily allow trimming lines inside magit diffs! yey!
+(add-hook 'magit-status-mode-hook
+ (lambda ()
+   (local-set-key [deletechar] 'my-magit-delete-trailing-whitespace)))
+
