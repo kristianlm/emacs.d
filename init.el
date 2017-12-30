@@ -229,6 +229,7 @@
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
 
 (custom-set-variables  
  '(js2-basic-offset 2)  
@@ -260,8 +261,6 @@
 
 ;; this did not work
 ;;(add-to-list 'tramp-default-proxies-alist '(".*" "\`root\'" "/ssh:%h:"))
-
-
 
 (require 'js-comint)
 (setq inferior-js-program-command "mongo")
@@ -412,14 +411,12 @@
 (defun my-magit-delete-trailing-whitespace ()
   "Remove whitespace from the current file."
   (interactive)
-  (save-excursion
+  (save-excursion ;; why doesn't save-excursion work here?
     (magit-diff-visit-file-worktree (magit-file-at-point))
-    (magit-section-value (magit-current-section))
-    ;;(ws-trim-line nil)
-    ;;() (delete-trailing-whitespace)
+    ;;(magit-section-value (magit-current-section))
+    (ws-trim-line nil)
     ;;(count-words-region)
-    (save-buffer)
-    (kill-buffer))
+    (save-buffer))
   (magit-refresh))
 
 ;; easyily allow trimming lines inside magit diffs! yey!
@@ -427,3 +424,4 @@
  (lambda ()
    (local-set-key [deletechar] 'my-magit-delete-trailing-whitespace)))
 
+(global-set-key (kbd "C-:") 'avy-goto-char)

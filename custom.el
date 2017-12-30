@@ -19,6 +19,7 @@
  '(display-buffer-reuse-frames t)
  '(ede-project-directories (quote ("/home/klm/opt/rudel")))
  '(fringe-mode (quote (1 . 1)) nil (fringe))
+ '(git-link-use-commit t)
  '(highlight-symbol-idle-delay 0.1)
  '(hippie-expand-try-functions-list
    (quote
@@ -67,7 +68,7 @@
  '(overflow-newline-into-fringe t)
  '(package-selected-packages
    (quote
-    (gradle-mode less-css-mode glsl-mode markdown-preview-mode inf-clojure elm-mode fish-mode csharp-mode zen-and-art-theme yasnippet yaml-mode ws-trim web-mode thrift tagedit swiper smex smartparens slime-repl sibilant-mode scheme-complete restclient repository-root quack protobuf-mode pretty-lambdada php-extras parenface paren-face paredit org-present nodejs-repl nhexl-mode nginx-mode multiple-cursors mongo markdown-mode mark-multiple magit lua-mode lispyscript-mode jsshell js2-mode js-comint inf-ruby inf-php imenu-anywhere ido-ubiquitous ido-better-flex idle-highlight-mode idle-highlight icicles hl-sexp hippie-expand-slime highlight-symbol haskell-mode groovy-mode grep-o-matic fuzzy-match fringe-helper flx-ido find-file-in-project expand-region evil-nerd-commenter emacs-droid elisp-slime-nav dockerfile-mode color-theme-heroku cmake-mode clojurescript-mode chicken-scheme bookmark+ auto-complete ascope apache-mode android-mode ag)))
+    (ahg crappy-jsp-mode idris-mode avy git-link gradle-mode less-css-mode glsl-mode markdown-preview-mode inf-clojure elm-mode fish-mode csharp-mode zen-and-art-theme yasnippet yaml-mode ws-trim web-mode thrift tagedit swiper smex smartparens slime-repl sibilant-mode scheme-complete restclient repository-root quack protobuf-mode pretty-lambdada php-extras parenface paren-face paredit org-present nodejs-repl nhexl-mode nginx-mode multiple-cursors mongo markdown-mode mark-multiple magit lua-mode lispyscript-mode jsshell js2-mode js-comint inf-ruby inf-php imenu-anywhere ido-ubiquitous ido-better-flex idle-highlight-mode idle-highlight icicles hl-sexp hippie-expand-slime highlight-symbol haskell-mode groovy-mode grep-o-matic fuzzy-match fringe-helper flx-ido find-file-in-project expand-region evil-nerd-commenter emacs-droid elisp-slime-nav dockerfile-mode color-theme-heroku cmake-mode clojurescript-mode chicken-scheme bookmark+ auto-complete ascope apache-mode android-mode ag)))
  '(paren-mode (quote paren) nil (paren))
  '(quack-default-program "csi")
  '(quack-programs
@@ -79,6 +80,7 @@
  '(split-height-threshold 300)
  '(tool-bar-mode nil)
  '(tool-bar-position (quote right))
+ '(web-mode-enable-auto-indentation nil)
  '(web-mode-markup-indent-offset 2))
 
 
