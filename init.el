@@ -429,6 +429,12 @@
 (require 'dumb-jump)
 (global-set-key (kbd "M-C-.") 'dumb-jump-go)
 
+
+(global-set-key (kbd "C-M-&")
+                (lambda ()
+                  (interactive)
+                  (async-shell-command "gitk --all" nil nil)))
+
 ;; gforth.el
 (autoload 'forth-mode       "~/.emacs.d/gforth.el")
 (autoload 'forth-block-mode "~/.emacs.d/gforth.el")
