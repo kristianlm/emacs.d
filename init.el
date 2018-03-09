@@ -425,6 +425,10 @@
    (local-set-key [deletechar] 'my-magit-delete-trailing-whitespace)))
 
 (global-set-key (kbd "C-:") 'avy-goto-char)
+
+(require 'dumb-jump)
+(global-set-key (kbd "M-C-.") 'dumb-jump-go)
+
 ;; gforth.el
 (autoload 'forth-mode       "~/.emacs.d/gforth.el")
 (autoload 'forth-block-mode "~/.emacs.d/gforth.el")
