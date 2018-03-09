@@ -425,3 +425,44 @@
    (local-set-key [deletechar] 'my-magit-delete-trailing-whitespace)))
 
 (global-set-key (kbd "C-:") 'avy-goto-char)
+;; gforth.el
+(autoload 'forth-mode       "~/.emacs.d/gforth.el")
+(autoload 'forth-block-mode "~/.emacs.d/gforth.el")
+
+(setq auto-mode-alist (cons '("\\.fs\\'" . forth-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.f\\'" . forth-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.4th\\'" . forth-mode) auto-mode-alist))
+;;(setq auto-mode-alist (cons '("\\.fb\\'" . forth-block-mode) auto-mode-alist))
+
+(add-hook 'forth-mode-hook
+          (function (lambda ()
+                      ;; customize variables here:
+                      (setq forth-indent-level 4)
+                      (setq forth-minor-indent-level 2)
+                      (setq forth-hilight-level 3))))
+
+
+(defun forth-send-line ()
+  "Send the current line to the inferior Forth process."
+  (interactive)
+  (forth-send-region (line-beginning-position)
+                     (line-end-position)))
+
+(defun forth-send-word-and-print ()
+    "Send the current or the previous word to the Forth process and ."
+    (interactive)
+    (let (start (end (point)))
+      (save-excursion
+	(re-search-backward "[\t\n ]")
+        (forward-char) ;; skip found whitespace " "
+        (setq start (point))
+	(re-search-forward  "[\t\n ]")
+	(comint-send-region (forth-proc) start (- (point) 1))
+        (comint-send-string (forth-proc) " h. \n"))))
+
+;; I never used reposition-window or whatever C-M-l was bound to before.
+(add-hook 'forth-mode-hook
+  (lambda()
+    (local-set-key (kbd "C-M-l") 'forth-send-line)
+    (local-set-key (kbd "C-x C-e") 'forth-send-word-and-print)
+    (local-set-key (kbd "C-M-x") 'forth-send-paragraph)))
