@@ -435,6 +435,17 @@
                   (interactive)
                   (async-shell-command "gitk --all" nil nil)))
 
+(defun char->int (str)
+  (interactive
+   (let ((str (read-string "Foo: " nil 'history:char->int)))
+     (list str)))
+  (message (mapconcat (lambda (x) (format "%c:0x%0x/%d" x x x)) str "\n")))
+
+(defun int->char (str)
+  (interactive
+   (let ((str (read-string "int: " nil 'history:int->char)))
+     (list str)))
+  (message (mapconcat (lambda (x) (format "%c:0x%0x/%d" x x x)) str "\n")))
 ;; gforth.el
 (autoload 'forth-mode       "~/.emacs.d/gforth.el")
 (autoload 'forth-block-mode "~/.emacs.d/gforth.el")
