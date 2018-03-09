@@ -446,6 +446,10 @@
    (let ((str (read-string "int: " nil 'history:int->char)))
      (list str)))
   (message (mapconcat (lambda (x) (format "%c:0x%0x/%d" x x x)) str "\n")))
+
+(global-set-key (kbd "C-x t") 'toggle-truncate-lines)
+
+
 ;; gforth.el
 (autoload 'forth-mode       "~/.emacs.d/gforth.el")
 (autoload 'forth-block-mode "~/.emacs.d/gforth.el")
